@@ -1,0 +1,47 @@
+{
+  "attestations": {
+    "idTokenHints": [
+      {
+        "mapping": [
+          { 
+            "outputClaim": "photo", 
+            "required": false, 
+            "inputClaim": "photo", 
+            "indexed": false 
+          },
+          { 
+            "outputClaim": "firstName", 
+            "required": true, 
+            "inputClaim": "firstName", 
+            "indexed": false 
+          },
+          { 
+            "outputClaim": "lastName", 
+            "required": true, 
+            "inputClaim": "lastName", 
+            "indexed": false 
+          },
+          { 
+            "outputClaim": "dateOfBirth", 
+            "required": true, 
+            "inputClaim": "dateOfBirth", 
+            "indexed": false 
+          },
+          { 
+            "outputClaim": "address", 
+            "required": true, 
+            "inputClaim": "address", 
+            "indexed": false 
+          }
+        ],
+        "required": true
+      }
+    ]
+  },
+  "validityInterval": 31556952,
+  "vc": {
+    "type": [
+      "WorkshopUserIdentityCard"
+    ]
+  }
+}
