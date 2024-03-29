@@ -2,7 +2,8 @@
 - We work with one tenant. Each name for the credential should be unique.
 - You can modify the field - add/remove/change required fields
 
-
+TODO:
+- Please check the file structure 
 
 ## my credential:
 WorkshopUserIdentityCard
