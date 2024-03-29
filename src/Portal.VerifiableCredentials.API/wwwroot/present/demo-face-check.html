@@ -1,0 +1,128 @@
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Present Verified ID</title>
+    
+    <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+            integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+            crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+            crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="../styles.css">
+</head>
+<body class="factorlabs-corporation-page-background">
+<div class="container-fluid">
+    <div class="row align-items-center justify-content-center" id="init-page-container">
+        
+        <div class="col-lg-4 col-md-10 col-sm-10 ">
+            <div class="row justify-content-center content-web">
+                <div id="qr-text" style="display:none;font-size: 18px;">
+                    <p>Please scan QR Code to present your Verified ID.</p>
+                </div>
+            </div>
+            <div class="row justify-content-center content-web">
+                <div id="qr-code-frame" class="d-block img-fluid w-100" style="background:white;">
+                    <div id="qr-code" style="padding:25px"></div>
+                </div>
+            </div>
+            <div class="row justify-content-center content-mobile factorlabs-yellow">
+                <div class="col-12">
+                <p>You use mobile application. Please click button to present your Verified Employee Credential from Authenticator App</p>
+                <p>You need to redirect back manually from the Authenticator app to the browser</p>
+                </div>
+            </div>
+
+            <div class="row justify-content-center content-mobile" style="padding:25px">
+                <a id="open-authenticator-app" class="btn btn-primary btn-lg" role="button">Open Authenticator App To Present your Verified ID</a>
+            </div>
+            <div class="row justify-content-center"></div>
+        </div>
+    </div>
+
+    <div id="summary" style="display: none" class="summary-content">
+        <div class="row" >
+            <div class="col-12 text-center factorlabs-green" style="font-size: 52px; margin: 15px">
+                <p>Good work! I'm happy to see the person from</p> 
+                <p id="vc-iss-name"></p>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-12 text-center factorlabs-yellow" style="font-size: 42px; margin: 15px">
+                <p>We want to give you a 25% discount on the shopping based on your cooperation.</p>
+                <p>Here is your discount code: VerifiedId</p>
+            </div>
+        </div>
+        <div class="row" >
+            <div class="col-12 text-center factorlabs-green" style="font-size: 36px;">Also, this is a demo page, so you can check what is
+                inside your credential:
+            </div>
+        </div>       
+
+        <div class="row">
+            <div class="col-3 text-right table-title">Claim</div>
+            <div class="col-4 table-title">Value</div>
+        </div>
+        <div class="row">
+            <div class="col-3 text-right first-color ">Credential Type</div>
+            <div class="col-4 text-left first-color " id="vc-type"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 text-right next-color">Issuer</div>
+            <div class="col-8 text-truncate text-left next-color" id="vc-iss"></div>
+        </div>
+        <div class="row">
+            <div class="col-3 text-right first-color">Issuer Link</div>
+            <div class="col-8 text-left first-color">
+                <a href="https://verifiedid.did.msidentity.com/v1.0/tenants/6790fadf-9751-4f73-8f65-844675b9a22a/verifiableCredentials/contracts/f68164e0-f53d-686d-2d9c-cd147fa0f341/manifest">Link</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-3 text-right next-color">Subject (wallet owner)</div>
+            <div class="col-8 text-truncate text-left next-color" id="vc-sub">Value</div>
+        </div>
+        <div class="row">
+            <div class="col-3 text-right first-color">Subject ION Link</div>
+            <div class="col-4 text-left first-color">
+                <a href="" id="subject-link">Link</a>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right next-color">Display Name</div>
+            <div class="col-md-4 text-left next-color" id="display-name"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right first-color">Job Title</div>
+            <div class="col-md-4 text-left first-color" id="job-title"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right next-color">Face Confidence</div>
+            <div class="col-md-4 text-left next-color" id="face-check-result"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-3 text-right first-color">Your Photo From Verified ID</div>
+            <div class="col-md-4 text-left first-color" >
+                <img id="photo" src="" alt="your photo"/>
+            </div>
+        </div>
+    </div>
+    <div class="row col-12 align-items-center justify-content-center">
+        <button type="button"  class="btn btn-primary btn-lg btn-block back-to-index">Back</button>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center"><p style="font-size: 16px;color: #8BD3AB">This is only DEMO - NOT PRODUCTION
+            ready system
+            :)</p></div>
+    </div>
+</div>
+</body>
+<script src="../qrcode.min.js"></script>
+<script src="../vs-for-html.js"></script>
+<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1e090718216445549e6de7ca221183fe"}'></script><!-- End Cloudflare Web Analytics -->
+</html>
