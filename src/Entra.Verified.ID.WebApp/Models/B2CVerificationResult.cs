@@ -1,11 +1,12 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using Newtonsoft.Json;
 using Portal.VerifiableCredentials.API.Services;
 
 namespace Portal.VerifiableCredentials.API.Models;
 
 [JsonConverter(typeof(FlatCommonFieldsConverter<B2CVerificationResult>))]
-public record B2CVerificationResult: WithClaims
+public record B2CVerificationResult : WithClaims
 {
     public B2CVerificationResult(string vcType, string vcIss, string vcSub, string vcKey,
         IDictionary<string, string> claims) : base(claims)
@@ -16,7 +17,7 @@ public record B2CVerificationResult: WithClaims
         VcIss = vcIss;
     }
 
-    
+
     public string VcKey { get; init; }
     public string VcIss { get; init; }
     public string VcSub { get; init; }
@@ -32,9 +33,8 @@ public record WithClaims
 
     protected WithClaims()
     {
-        throw new System.NotImplementedException();
+        throw new NotImplementedException();
     }
 
-    [JsonIgnore]
-    public IDictionary<string, string> Claims { get; init; }  
+    [JsonIgnore] public IDictionary<string, string> Claims { get; init; }
 }

@@ -6,5 +6,6 @@ public class Configuration
     {
         Validation = new Validation();
     }
+
     public Validation Validation { get; set; }
 }

@@ -4,15 +4,15 @@ namespace Portal.VerifiableCredentials.API.Services;
 
 internal struct PushJsonComposedObjectAsValue<T> : IDisposable
 {
-    Action<T> _setValue;
-    T _oldValue;
+    private readonly Action<T> _setValue;
+    private readonly T _oldValue;
 
     internal PushJsonComposedObjectAsValue(T value, Func<T> getValue, Action<T> setValue)
     {
         if (getValue == null)
             throw new ArgumentNullException(nameof(getValue));
-        this._setValue = setValue ?? throw new ArgumentNullException(nameof(setValue));
-        this._oldValue = getValue();
+        _setValue = setValue ?? throw new ArgumentNullException(nameof(setValue));
+        _oldValue = getValue();
         setValue(value);
     }
 

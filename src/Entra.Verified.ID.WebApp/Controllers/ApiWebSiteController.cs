@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
-using Portal.VerifiableCredentials.API.Configuration;
 using Portal.VerifiableCredentials.API.Services;
 
 namespace Portal.VerifiableCredentials.API.Controllers;
@@ -10,15 +9,15 @@ namespace Portal.VerifiableCredentials.API.Controllers;
 [ApiController]
 public class WebSiteController : ControllerBase
 {
-    private readonly VcService _vcService;
     private readonly VcConfigurationService _config;
+    private readonly VcService _vcService;
 
     public WebSiteController(VcService vcService, VcConfigurationService config)
     {
         _vcService = vcService;
         _config = config;
     }
-   
+
     [HttpGet("/api/website/issuer/settings")]
     public async Task<ActionResult> Settings()
     {

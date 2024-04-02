@@ -1,35 +1,40 @@
 (function () {
-    
+
     var setIntervalIdToCheckVcStatus = null;
     var buttonNextIdForB2C = "next";
     var checkStatus = 3000;
-   
+
     var sessionKey = getRandomInt(9000000)
+
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
     }
-    function checkDeviceTypeAndHideNotNeeded(){
+
+    function checkDeviceTypeAndHideNotNeeded() {
         if (/iPhone/i.test(navigator.userAgent) || /Android/i.test(navigator.userAgent)) {
             $('.content-web').addClass('d-none');
-        }else{
+        } else {
             $('.content-mobile').addClass('d-none');
         }
     }
-    function initPresentationView(){
-        
+
+    function initPresentationView() {
+
     }
-    function runPresentation(){
-        if(window.location.href.indexOf("issue") > -1) {
-                      
+
+    function runPresentation() {
+        if (window.location.href.indexOf("issue") > -1) {
+
         }
-        if(window.location.href.indexOf("present") > -1) {
-            presentVc();          
+        if (window.location.href.indexOf("present") > -1) {
+            presentVc();
         }
     }
-    function getConfiguration(){
-        var fullRootHost = $(location).attr('protocol')+"//"+$(location).attr('hostname');
-        
-        if(window.location.href.indexOf("issue") > -1 && window.location.href.indexOf("demo-face") > -1) {
+
+    function getConfiguration() {
+        var fullRootHost = $(location).attr('protocol') + "//" + $(location).attr('hostname');
+
+        if (window.location.href.indexOf("issue") > -1 && window.location.href.indexOf("demo-face") > -1) {
             $("#sign-in").click(issueVcWithDisplayClaimsForTheUser);
             return {
                 apiPresentationPrefix: `${fullRootHost}/api/presentation`,
@@ -39,7 +44,7 @@
                 host: `${fullRootHost}/api/`
             }
         }
-        if(window.location.href.indexOf("present") > -1 && window.location.href.indexOf("demo-face") > -1) {
+        if (window.location.href.indexOf("present") > -1 && window.location.href.indexOf("demo-face") > -1) {
             initPresentationView();
             return {
                 apiPresentationPrefix: `${fullRootHost}/api/presentation`,
@@ -49,8 +54,8 @@
                 host: `${fullRootHost}/api/`
             }
         }
-        
-        if(window.location.href.indexOf("issue") > -1) {
+
+        if (window.location.href.indexOf("issue") > -1) {
             return {
                 apiPresentationPrefix: `${fullRootHost}/api/presentation`,
                 apiIssuancePrefix: `${fullRootHost}/api/issuance`,
@@ -59,7 +64,7 @@
                 host: `${fullRootHost}/api/`
             }
         }
-        if(window.location.href.indexOf("present") > -1) {
+        if (window.location.href.indexOf("present") > -1) {
             initPresentationView();
             return {
                 apiPresentationPrefix: `${fullRootHost}/api/presentation`,
@@ -71,22 +76,23 @@
         }
         return undefined;
     }
+
     var config = getConfiguration();
-    
-    
-    
+
+
     var respIssuanceReq = null;
-    function issueVcWithDisplayClaimsForTheUser(){
+
+    function issueVcWithDisplayClaimsForTheUser() {
         // add self asserted claims, if any 
         var request = {};
         if (selfAssertedClaims) {
-            var idx;           
+            var idx;
             for (idx = 0; idx < Object.keys(selfAssertedClaims).length; idx++) {
-                var id = idx + 1;               
-                request[Object.keys(selfAssertedClaims)[idx]] = document.getElementById('entry' + id).value;                
+                var id = idx + 1;
+                request[Object.keys(selfAssertedClaims)[idx]] = document.getElementById('entry' + id).value;
             }
         }
-        
+
         fetch(`${config.apiIssuancePrefix}/request`, {
             body: JSON.stringify(request),
             method: "POST",
@@ -102,17 +108,17 @@
                 }
                 console.log(response)
                 respIssuanceReq = JSON.parse(response);
-                if(document.getElementById('open-authenticator-app')!=null){
+                if (document.getElementById('open-authenticator-app') != null) {
                     document.getElementById('open-authenticator-app').href = respIssuanceReq.url;
-                }                
-                
+                }
+
                 if (respIssuanceReq.error_description) {
                     document.getElementById("message").innerHTML = respIssuanceReq.error_description;
                     document.getElementById('message-wrapper').style.display = "block";
                     respIssuanceReq = null;
                 } else {
                     displayQrCode(respIssuanceReq.url, respIssuanceReq.pin);
-                    if(setIntervalIdToCheckVcStatus!=null){
+                    if (setIntervalIdToCheckVcStatus != null) {
                         clearInterval(setIntervalIdToCheckVcStatus);
                     }
                     setIntervalIdToCheckVcStatus = setInterval(function () {
@@ -121,10 +127,11 @@
                 }
             })
     }
-    
+
     var selfAssertedClaims;
     var credentialType;
-    function showClaimsFromSettings(selfAssertedClaims){
+
+    function showClaimsFromSettings(selfAssertedClaims) {
         if (Object.keys(selfAssertedClaims).length > 0) {
             var idx = 1;
             var html = "";
@@ -140,14 +147,12 @@
     }
 
 
-    function initView(){
-        checkDeviceTypeAndHideNotNeeded();    
-        $(".back-to-index").click(backToMainPage);   
-        
-        fetch(`${config.host}website/issuer/settings`,{
-            headers: {
-                
-            }        
+    function initView() {
+        checkDeviceTypeAndHideNotNeeded();
+        $(".back-to-index").click(backToMainPage);
+
+        fetch(`${config.host}website/issuer/settings`, {
+            headers: {}
         })
             .then(response => response.text())
             .catch(error => document.getElementById("message").innerHTML = error)
@@ -157,7 +162,7 @@
                 }
                 var data = JSON.parse(response);
                 document.body.style.backgroundColor = data.displayCard.backgroundColor;
-                if(document.getElementById('vc-logo')){
+                if (document.getElementById('vc-logo')) {
                     document.getElementById('vc-logo').src = data.displayCard.logo.uri;
                 }
 
@@ -167,41 +172,43 @@
                 selfAssertedClaims = null;
                 if (data.selfAssertedClaims) {
                     selfAssertedClaims = data.selfAssertedClaims;
-                    if( config.showVcClaims===true){
+                    if (config.showVcClaims === true) {
                         showClaimsFromSettings(selfAssertedClaims);
                     }
                 }
                 document.querySelector("#inp").addEventListener("change", readFile);
-                if(config.type ==="basic-issue"){
+                if (config.type === "basic-issue") {
                     issueVcWithDisplayClaimsForTheUser();
                 }
             });
     }
+
     function readFile() {
         if (!this.files || !this.files[0]) return;
         const FR = new FileReader();
-        FR.addEventListener("load", function(evt) {            
+        FR.addEventListener("load", function (evt) {
             document.querySelector("#img").src = evt.target.result;
             document.getElementById('entry1').value = removeBeginningOfTheBase64DataPhoto(evt.target.result);
-            if(document.querySelector("#img").clientWidth>200 || document.querySelector("#img").clientHeight>200){
+            if (document.querySelector("#img").clientWidth > 200 || document.querySelector("#img").clientHeight > 200) {
                 document.querySelector("#img").src = "";
-                document.getElementById('entry1').value = "";                
+                document.getElementById('entry1').value = "";
             }
         });
         FR.readAsDataURL(this.files[0]);
-    } 
-    function removeBeginningOfTheBase64DataPhoto(photo){
+    }
+
+    function removeBeginningOfTheBase64DataPhoto(photo) {
         return photo.replace("data:image/jpeg;base64,", "");
     }
-    
-    function presentVc(){
+
+    function presentVc() {
         const urlParams = new URLSearchParams(window.location.search);
         const faceCheckFromQueryParam = urlParams.get('faceCheckEnabled');
         var request = {
-            faceCheckEnabled: faceCheckFromQueryParam==='1',
+            faceCheckEnabled: faceCheckFromQueryParam === '1',
             bankOperation: config.bankOperation
         };
-        
+
         fetch(`${config.apiPresentationPrefix}/request`, {
             body: JSON.stringify(request),
             method: "POST",
@@ -212,13 +219,13 @@
             .then(response => response.text())
 
             .then(response => {
-                if (response.length > 0) {                    
+                if (response.length > 0) {
                     processPresentationResponse(response, config.apiPresentationPrefix);
                 }
             });
     }
-    
-    function processPresentationResponse(response, statusPrefix){
+
+    function processPresentationResponse(response, statusPrefix) {
         console.log(response)
         respPresReq = JSON.parse(response);
         document.getElementById('open-authenticator-app').href = respPresReq.url;
@@ -229,67 +236,68 @@
 
         if (respPresReq.error_description) {
             respPresReq = null;
-            return;
+
         } else {
-           
+
             displayQrCode(respPresReq.url, respPresReq.pin);
             requestId = respPresReq.id;
-            if(setIntervalIdToCheckVcStatus!=null){
+            if (setIntervalIdToCheckVcStatus != null) {
                 clearInterval(setIntervalIdToCheckVcStatus);
             }
             setIntervalIdToCheckVcStatus = setInterval(function () {
                 checkVcStatus(respPresReq, statusPrefix, "present")
             }, checkStatus);
-            }
-    }
-    function checkVcStatus(responseObject, prefix, type){
-            fetch(`${prefix}/status?id=${responseObject.id}`,{
-                headers: {
-                    'x-session-key': `${sessionKey}`                   
-                }
-            })
-                .then(response => response.text())
-                .catch(error => document.getElementById("message").innerHTML = error)
-                .then(response => {
-                    if (response.length <= 0) {
-                        return;
-                    }
-                    console.log(response)
-                    respMsg = JSON.parse(response);
-                    //document.getElementById('message-wrapper').style.display = "block";
-                    document.getElementById('qr-text').style.display = "none";
-                    //document.getElementById('portal-link').style.display = "block";
-                    
-                    // respMsg.status == 1 -> QR Code scanned
-                    if (respMsg.status == 1) {
-                        //document.getElementById('message').innerHTML = respMsg.message;
-                        document.getElementById("qr-code").style.opacity = "0.1";
-                        //clearInterval(checkStatus);
-                    }
-                    // respMsg.status == 2 -> VC issued
-                    if (respMsg.status == 2) {
-                        document.getElementById('qr-code-frame').style.display = "none";
-                        document.getElementById('qr-code').style.display = "none";
-                        //document.getElementById('message').innerHTML = respMsg.message;
-                        if(!(config.type.indexOf("b2c")>-1) && type==="present") {
-                            displayPresentedVc(responseObject.id);
-                        }                        
-                        clearInterval(setIntervalIdToCheckVcStatus);
-                    }
-                    // respMsg.status == 99 -> VC issueance failed
-                    if (respMsg.status == 99) {
-                        document.getElementById('qr-code-frame').style.display = "none";
-                        document.getElementById('qr-code').style.display = "none";
-                        //document.getElementById('message').innerHTML = respMsg.message;
-                        //document.getElementById('message').style.textColor = "red";
-                        clearInterval(setIntervalIdToCheckVcStatus);
-                    }
-
-                });
         }
-        
-    function processIssuanceRequest(){
-        
+    }
+
+    function checkVcStatus(responseObject, prefix, type) {
+        fetch(`${prefix}/status?id=${responseObject.id}`, {
+            headers: {
+                'x-session-key': `${sessionKey}`
+            }
+        })
+            .then(response => response.text())
+            .catch(error => document.getElementById("message").innerHTML = error)
+            .then(response => {
+                if (response.length <= 0) {
+                    return;
+                }
+                console.log(response)
+                respMsg = JSON.parse(response);
+                //document.getElementById('message-wrapper').style.display = "block";
+                document.getElementById('qr-text').style.display = "none";
+                //document.getElementById('portal-link').style.display = "block";
+
+                // respMsg.status == 1 -> QR Code scanned
+                if (respMsg.status == 1) {
+                    //document.getElementById('message').innerHTML = respMsg.message;
+                    document.getElementById("qr-code").style.opacity = "0.1";
+                    //clearInterval(checkStatus);
+                }
+                // respMsg.status == 2 -> VC issued
+                if (respMsg.status == 2) {
+                    document.getElementById('qr-code-frame').style.display = "none";
+                    document.getElementById('qr-code').style.display = "none";
+                    //document.getElementById('message').innerHTML = respMsg.message;
+                    if (!(config.type.indexOf("b2c") > -1) && type === "present") {
+                        displayPresentedVc(responseObject.id);
+                    }
+                    clearInterval(setIntervalIdToCheckVcStatus);
+                }
+                // respMsg.status == 99 -> VC issueance failed
+                if (respMsg.status == 99) {
+                    document.getElementById('qr-code-frame').style.display = "none";
+                    document.getElementById('qr-code').style.display = "none";
+                    //document.getElementById('message').innerHTML = respMsg.message;
+                    //document.getElementById('message').style.textColor = "red";
+                    clearInterval(setIntervalIdToCheckVcStatus);
+                }
+
+            });
+    }
+
+    function processIssuanceRequest() {
+
         fetch(`${config.apiIssuancePrefix}/request`, {
             method: "POST",
             body: JSON.stringify({productSessionId: config.productSessionKey}),
@@ -311,8 +319,8 @@
                     respIssuanceReq = null;
                 } else {
                     displayQrCode(respIssuanceReq.url, respIssuanceReq.pin);
-                    
-                    if(setIntervalIdToCheckVcStatus!=null){
+
+                    if (setIntervalIdToCheckVcStatus != null) {
                         clearInterval(setIntervalIdToCheckVcStatus);
                     }
                     setIntervalIdToCheckVcStatus = setInterval(function () {
@@ -321,7 +329,7 @@
                 }
             })
     }
-    
+
     function displayPresentedVc(requestId) {
         fetch(`${config.apiPresentationPrefix}/response-html?id=` + requestId, {
             method: "POST",
@@ -342,38 +350,40 @@
                     console.log(`DEBUG - with pure Entra VC API result for data`);
                     console.log(response);
                     respPresReq = JSON.parse(response);
-                   
-                    if(config.type.indexOf("present") > -1){
+
+                    if (config.type.indexOf("present") > -1) {
                         document.getElementById('summary').style.display = "";
-                        
+
                         document.getElementById('init-page-container').style.display = "none";
                         document.getElementById('vc-iss').textContent = respPresReq.vcIss;
                         $('#vc-iss-name').html(respPresReq.vcIss);
                         document.getElementById('vc-sub').textContent = respPresReq.vcSub;
-                        
+
                         document.getElementById('firstName').textContent = respPresReq.firstName;
                         document.getElementById('lastName').textContent = respPresReq.lastName;
                         document.getElementById('address').textContent = respPresReq.address;
                         document.getElementById('dateOfBirth').textContent = respPresReq.dateOfBirth;
-                        
+
                         document.getElementById('subject-link').href = "https://identity.foundation/ion/explorer/?did=" + respPresReq.vcSub;
 
                         document.getElementById('face-check-result').textContent = respPresReq.faceCheckMatchConfidenceScore;
                         document
                             .getElementById('photo')
                             .src = `data:image/jpg;base64,${respPresReq.photo}`;
-                        
-                    }else{
+
+                    } else {
                         console.log("not supported presentation type - for now only console log");
-                        console.log(respPresReq);                        
-                    }                                   
+                        console.log(respPresReq);
+                    }
                 }
             });
-    }   
+    }
+
     function textFromBase64(base64) {
         return atob(base64);
     }
-    function displayQrCode(qrCodeUrl, pin){
+
+    function displayQrCode(qrCodeUrl, pin) {
         var svgNode = QRCode({
             msg: qrCodeUrl.padEnd(225)
             , dim: 400
@@ -388,7 +398,7 @@
         svgNode.removeAttribute("width");
         svgNode.removeAttribute("height");
         svgNode.setAttribute("width", "100%");
-        
+
         document.getElementById("qr-code").append(svgNode);
         document.getElementById('qr-code-frame').style.display = "block";
         document.getElementById('qr-code').style.display = "block";
@@ -397,12 +407,14 @@
         if (pin) {
             document.getElementById('pin-code-text').innerHTML = "Pin code: " + pin;
             document.getElementById('pin-code-text').style.display = "block";
-        }     
+        }
     }
-    function backToMainPage(){
+
+    function backToMainPage() {
         window.location.href = "/";
     }
+
     initView();
-    
+
     runPresentation();
 })();

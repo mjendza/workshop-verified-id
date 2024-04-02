@@ -1,21 +1,25 @@
-.heading{
+.heading {
     display: none;
 }
-.intro{
+
+.intro {
     display: none;
 }
-.divider{
+
+.divider {
     display: none;
 }
-.presentation{
+
+.presentation {
 }
+
 .factorlabs-portal-page-background {
     font-family: sans-serif;
     background-color: #FFBB05;
     color: #575757;
 }
 
-.factorlabs-portal-yellow{
+.factorlabs-portal-yellow {
     color: #FFBB05;
 }
 
@@ -23,56 +27,68 @@
     margin: 0 auto;
     width: 800px;
 }
-.next-color{
+
+.next-color {
     color: #86AADF;
 }
-.first-color{
+
+.first-color {
     color: #FBBD59;
 }
-.factorlabs-green{
+
+.factorlabs-green {
     color: #8BD3AB;
+
     a:visited {
         color: #8BD3AB;
     }
+
     a {
         color: #8BD3AB;
     }
 }
-.factorlabs-blue{
+
+.factorlabs-blue {
     color: #86AADF;
 }
-.factorlabs-yellow{
+
+.factorlabs-yellow {
     color: #FBBD59;
 }
-.factorlabs-pink{
+
+.factorlabs-pink {
     color: #F68B9B;
 }
-.factorlabs-corporation-page-background{
+
+.factorlabs-corporation-page-background {
     color: #315168;
     font-family: 'Poppins', sans-serif;
     font-size: 35px;
 }
 
-.factorlabs-product-page-background{
+.factorlabs-product-page-background {
     color: #86AADF;
     background-color: #315168;
     font-family: 'Poppins', sans-serif;
     font-size: 35px;
 }
-.ingredient-issue-view{
+
+.ingredient-issue-view {
     color: #86AADF;
     background-color: #315168;
     font-family: 'Poppins', sans-serif;
     font-size: 35px;
     padding: 35px;
 }
-.selfAssertedClaims{
+
+.selfAssertedClaims {
     font-size: 25px;
 }
+
 .btn-primary,
 .btn-primary:hover,
 .btn-primary:focus {
-    background-color: #86AADF; 
+    background-color: #86AADF;
     border: none;
     color: #FFFFFF;
     padding: 10px;
@@ -80,10 +96,11 @@
     font-size: 24px;
 }
 
-.table-title{
+.table-title {
     font-size: 28px;
     font-weight: bold;
 }
+
 .factorlabs-portal-button {
     background-color: #ffffff;
     border: none;
@@ -96,13 +113,15 @@
     font-size: 16px;
     font-weight: bold;
 }
-.label-claim{
+
+.label-claim {
     font-size: 16px;
     font-weight: bold;
     color: #575757;
     margin: 6px 6px 6px 6px;
 }
-.input-claim{
+
+.input-claim {
     font-size: 14px;
     color: #575757;
     margin: 6px 6px 6px 6px;
@@ -111,30 +130,34 @@
     border-radius: 4px;
 }
 
-.demo-product-title{
+.demo-product-title {
     font-size: 45px;
 }
-.demo-product-body{
+
+.demo-product-body {
     font-size: 24px;
 }
+
 /*
     .B2C
  */
-.intro{
-    display: none;
-}
-.issue-factorlabs-verified-employee{
-    
-}
-.issue-glassfactor-verified-employee{
-
-}
-
-.issue-factorlabs-card{
+.intro {
     display: none;
 }
 
-.product-generate-view{
+.issue-factorlabs-verified-employee {
+
+}
+
+.issue-glassfactor-verified-employee {
+
+}
+
+.issue-factorlabs-card {
+    display: none;
+}
+
+.product-generate-view {
     background: #30526A;
     padding: 35px;
 }

@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
@@ -16,10 +15,10 @@ namespace Portal.VerifiableCredentials.API.Controllers.Base;
 [ApiController]
 public class ApiIssuanceController : ControllerBase
 {
-    protected readonly CacheServiceWrapper _cache;
-    private readonly VcService _vcService;
-    protected readonly ILogger _logger;
     private readonly AppSettingsModel _appSettings;
+    protected readonly CacheServiceWrapper _cache;
+    protected readonly ILogger _logger;
+    private readonly VcService _vcService;
 
     public ApiIssuanceController(IOptions<AppSettingsModel> appSettings
         , CacheServiceWrapper cache
@@ -30,9 +29,9 @@ public class ApiIssuanceController : ControllerBase
         _logger = logger;
         _appSettings = appSettings.Value;
     }
-    
+
     [HttpPost("request")]
-    public async Task<ActionResult> IssuanceRequestPost([FromBody]IssuanceRequest model)
+    public async Task<ActionResult> IssuanceRequestPost([FromBody] IssuanceRequest model)
     {
         var userPresentationRequestId = Guid.NewGuid().ToString();
         var response =
@@ -45,15 +44,13 @@ public class ApiIssuanceController : ControllerBase
     {
         Request.Headers.TryGetValue("api-key", out var apiKey);
         if (_appSettings.ApiKeyForVerifiedCredentialsCallback != apiKey)
-        {
             return new ContentResult
                 {StatusCode = (int) HttpStatusCode.Unauthorized, Content = "api-key wrong or missing"};
-        }
         var state = vcCallbackEvent.State;
         _cache.CacheObjectWithExpiery(state, vcCallbackEvent, 3600);
         return new OkResult();
     }
-    
+
 
     [HttpGet("status")]
     public virtual ActionResult IssuanceResponse()
@@ -65,7 +62,7 @@ public class ApiIssuanceController : ControllerBase
             if (callback.RequestStatus == "request_retrieved")
                 return new OkObjectResult(new VcStatus(1,
                     "QR Code is scanned. Waiting for issuance to complete."));
-                   
+
             if (callback.RequestStatus == "issuance_successful")
             {
                 _cache.RemoveCacheValue(correlationId);
@@ -77,9 +74,10 @@ public class ApiIssuanceController : ControllerBase
             {
                 _cache.RemoveCacheValue(correlationId);
                 return new OkObjectResult(new VcStatus(99,
-                    $"Issuance process failed with reason: \" + callback.Error.Message"));
+                    "Issuance process failed with reason: \" + callback.Error.Message"));
             }
         }
+
         return new OkResult();
     }
 }

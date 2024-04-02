@@ -1,6 +1,5 @@
 ﻿using System.Collections.Generic;
 using Portal.VerifiableCredentials.API.Configuration;
-using Portal.VerifiableCredentials.API.Controllers.Base;
 using Portal.VerifiableCredentials.API.Models;
 using Portal.VerifiableCredentials.API.Models.VcApiContracts;
 
@@ -8,7 +7,8 @@ namespace Portal.VerifiableCredentials.API.Services;
 
 public static class VcRequestFactory
 {
-    public static VcPresentationRequest CreatePresentationRequest(string userPresentationRequestId, AppSettingsModel settings, string path, string apiKey, PresentationRequest requestModel)
+    public static VcPresentationRequest CreatePresentationRequest(string userPresentationRequestId,
+        AppSettingsModel settings, string path, string apiKey, PresentationRequest requestModel)
     {
         var request = new VcPresentationRequest
         {
@@ -16,7 +16,7 @@ public static class VcRequestFactory
             Authority = settings.VerifierAuthority,
             Registration = new Registration
             {
-                ClientName = requestModel.PurposeOfPresentation,
+                ClientName = requestModel.PurposeOfPresentation
             },
             Callback = new Callback
             {
@@ -25,28 +25,28 @@ public static class VcRequestFactory
                 Headers = new Dictionary<string, string> {{"api-key", apiKey}}
             },
             IncludeReceipt = false,
-            RequestedCredentials = new List<RequestedCredential>(),
-            
+            RequestedCredentials = new List<RequestedCredential>()
         };
         var cred = new RequestedCredential
         {
             Type = settings.CredentialType,
             //Manifest = settings.CredentialManifestUrl,
-            Purpose = requestModel.PurposeOfPresentation,
+            Purpose = requestModel.PurposeOfPresentation
             //AcceptedIssuers = new List<string>(new[] {_appSettings.VerifierAuthority})
         };
-        
-        if (requestModel!=null && requestModel.FaceCheckEnabled)
+
+        if (requestModel != null && requestModel.FaceCheckEnabled)
         {
             cred.Configuration = new Models.VcApiContracts.Configuration();
-            cred.Configuration.Validation.FaceCheck = new FaceCheck()
+            cred.Configuration.Validation.FaceCheck = new FaceCheck
             {
                 SourcePhotoClaimName = "photo",
-                MatchConfidenceThreshold = 70,
+                MatchConfidenceThreshold = 70
             };
         }
+
         request.RequestedCredentials.Add(cred);
-        
+
         return request;
     }
 

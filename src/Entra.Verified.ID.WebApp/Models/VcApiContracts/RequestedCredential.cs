@@ -5,10 +5,11 @@ namespace Portal.VerifiableCredentials.API.Models.VcApiContracts;
 public class RequestedCredential
 {
     public string Type { get; set; }
+
     //public string Manifest { get; set; }
     public string Purpose { get; set; }
     public List<string> AcceptedIssuers { get; set; }
-    public VcApiContracts.Configuration Configuration { get; set; }
+    public Configuration Configuration { get; set; }
 }
 
 public class FaceCheck

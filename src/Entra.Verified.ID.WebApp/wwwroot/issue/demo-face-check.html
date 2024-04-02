@@ -3,53 +3,55 @@
     <meta charset="utf-8">
     <title>Issue Factorlabs Card</title>
     <link href='https://fonts.googleapis.com/css?family=Poppins' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
-          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+    <link crossorigin="anonymous" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+          integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" rel="stylesheet">
+    <script crossorigin="anonymous"
             integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"
+            src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script crossorigin="anonymous"
             integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"
+            src="https://cdn.jsdelivr.net/npm/popper.js@1.14.7/dist/umd/popper.min.js"></script>
+    <script crossorigin="anonymous"
             integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-            crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="../styles.css">
+            src="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/js/bootstrap.min.js"></script>
+    <link href="../styles.css" rel="stylesheet">
 </head>
 <body>
 <div id="wrap">
     <div style="text-align: center;">
         <div class="h1">
             EXPERIMENTAL - Be sure that you want to use it!
-        </div >
+        </div>
         <img id="vc-logo" style="max-width: 300px"/>
         <div class="issue-factorlabs-verified-employee factorlabs-pink">
             <div class="h2">
-                Hey! This is a DEMO page to issue the Verified ID Card with picture. Picture should be JPG, smaller than 200x200 pixels and smaller than 200kb!!!
-            </div >
+                Hey! This is a DEMO page to issue the Verified ID Card with picture. Picture should be JPG, smaller than
+                200x200 pixels and smaller than 200kb!!!
+            </div>
         </div>
         <div class="issue-factorlabs-card">
-            Hey! This is the process to register new Factorlabs Portal Card. For MVP you need to provide the card number. Fill free to set you individual value.
+            Hey! This is the process to register new Factorlabs Portal Card. For MVP you need to provide the card
+            number. Fill free to set you individual value.
         </div>
-        <div id="message-wrapper" class="margin-bottom-75 margin-top-75" style="display: none">
+        <div class="margin-bottom-75 margin-top-75" id="message-wrapper" style="display: none">
             <i class="fas fa-user-check green icon-text-large margin-bottom-25"></i>
             <div id="message"></div>
         </div>
 
-        <div id="selfAssertedClaims" class="entry" style="display:none;">
+        <div class="entry" id="selfAssertedClaims" style="display:none;">
         </div>
-        
+
         <input id="inp" type="file">
         <p id="b64"></p>
         <img id="img">
-        
+
         <div class="row">
             <div class="col-9 align-items-center justify-content-center">
-                <button type="button" id="sign-in" class="btn btn-primary btn-lg btn-block">Issue With Photo
+                <button class="btn btn-primary btn-lg btn-block" id="sign-in" type="button">Issue With Photo
                 </button>
             </div>
             <div class="row col-3 align-items-center justify-content-center">
-                <button type="button"  class="btn btn-primary btn-lg btn-block back-to-index">Back</button>
+                <button class="btn btn-primary btn-lg btn-block back-to-index" type="button">Back</button>
             </div>
         </div>
         <div class="container-fluid">
@@ -59,7 +61,7 @@
                 </div>
             </div>
             <div class="row justify-content-center content-web">
-                <div id="qr-code-frame" class="d-block img-fluid w-100" style="background:white;">
+                <div class="d-block img-fluid w-100" id="qr-code-frame" style="background:white;">
                     <div id="qr-code" style="padding:25px"></div>
                 </div>
             </div>
@@ -68,31 +70,36 @@
             </div>
             <div class="row justify-content-center content-mobile factorlabs-yellow">
                 <div class="col-12">
-                    <p>You use mobile application. Please click button to issue your Verified Employee Credential via Authenticator App</p>
+                    <p>You use mobile application. Please click button to issue your Verified Employee Credential via
+                        Authenticator App</p>
                     <p>You need to redirect back manually from the Authenticator app to the browser</p>
                 </div>
             </div>
 
             <div class="row justify-content-center content-mobile" style="padding:25px">
-                <a id="open-authenticator-app" class="btn btn-primary btn-lg" role="button">Issue your Verified Employee Credential via Authenticator App</a>
+                <a class="btn btn-primary btn-lg" id="open-authenticator-app" role="button">Issue your Verified Employee
+                    Credential via Authenticator App</a>
             </div>
-            
+
         </div>
-      
+
         <div class="row">
             <div class="col-md-3"></div>
             <div class="col-md-6 text-center factorlabs-green">
                 <p>
-                    This is only DEMO - if doesn't work please let me know: via LinkedIn: <a href="https://www.linkedin.com/in/mjendza/">MJendza</a>
+                    This is only DEMO - if doesn't work please let me know: via LinkedIn: <a
+                        href="https://www.linkedin.com/in/mjendza/">MJendza</a>
                 </p>
             </div>
             <div class="col-md-3"></div>
         </div>
-       
+
     </div>
 </div>
 </body>
 <script src="../qrcode.min.js"></script>
 <script src="../vs-for-html.js"></script>
-<!-- Cloudflare Web Analytics --><script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "1e090718216445549e6de7ca221183fe"}'></script><!-- End Cloudflare Web Analytics -->
+<!-- Cloudflare Web Analytics -->
+<script data-cf-beacon='{"token": "1e090718216445549e6de7ca221183fe"}' defer
+        src='https://static.cloudflareinsights.com/beacon.min.js'></script><!-- End Cloudflare Web Analytics -->
 </html>

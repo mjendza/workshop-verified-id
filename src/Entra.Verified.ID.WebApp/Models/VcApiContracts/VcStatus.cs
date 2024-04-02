@@ -9,9 +9,8 @@ public class VcStatus
         Status = status;
         Message = message;
     }
-    [JsonPropertyName("status")]
-    public int Status { get; set; }
-    
-    [JsonPropertyName("message")]
-    public string Message { get; set; }
+
+    [JsonPropertyName("status")] public int Status { get; set; }
+
+    [JsonPropertyName("message")] public string Message { get; set; }
 }

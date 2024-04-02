@@ -6,7 +6,7 @@ using Portal.VerifiableCredentials.API.Services;
 namespace Portal.VerifiableCredentials.API.Models;
 
 [JsonConverter(typeof(FlatCommonFieldsConverter<HtmlVerificationResult>))]
-public record HtmlVerificationResult: WithClaims
+public record HtmlVerificationResult : WithClaims
 {
     public HtmlVerificationResult(VcCallbackEvent fullResult, string vcType, string vcIss, string vcSub, string vcKey,
         IDictionary<string, string> claims, double? faceCheckMatchConfidenceScore) : base(claims)
@@ -27,9 +27,9 @@ public record HtmlVerificationResult: WithClaims
     public string VcIss { get; init; }
     public string VcSub { get; init; }
     public string VcType { get; init; }
-    
+
     /// <summary>
-    /// For Debug
+    ///     For Debug
     /// </summary>
     public VcCallbackEvent FullObject { get; init; }
 

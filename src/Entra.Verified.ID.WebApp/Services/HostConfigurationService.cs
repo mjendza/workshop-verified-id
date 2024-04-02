@@ -4,7 +4,7 @@ namespace Portal.VerifiableCredentials.API.Services;
 
 public class HostConfigurationService : IHostConfigurationService
 {
-    private IHttpContextAccessor _httpContextAccessor;
+    private readonly IHttpContextAccessor _httpContextAccessor;
 
     public HostConfigurationService(IHttpContextAccessor httpContextAccessor)
     {

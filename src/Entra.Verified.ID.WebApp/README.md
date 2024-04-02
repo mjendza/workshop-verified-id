@@ -1,4 +1,3 @@
-
     "ApiEndpoint": "https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/",
     "TenantId": "<your-AAD-tenant-for-VC>",
     "Authority": "https://login.microsoftonline.com/{0}",
@@ -11,6 +10,7 @@
     "CredentialType": "B2CVerifiedAccount",
     "DidManifest": "https://verifiedid.did.msidentity.com/v1.0/<your-tenant-id-for-VC>/verifiableCredential/contracts/<your-name>",
     "IssuancePinCodeLength": 0
+
 ```
 - **ApiEndpoint** - Request Service API endpoint
 - **TenantId** - This is the Azure AD tenant that you have setup Verifiable Credentials in. It is not the B2C tenant.

@@ -16,11 +16,11 @@ namespace Portal.VerifiableCredentials.API.Controllers.Base;
 [ApiController]
 public class ApiPresentationController : ControllerBase
 {
-    private readonly VcService _vcService;
+    private readonly string _apiKey;
     protected readonly CacheServiceWrapper _cache;
     private readonly ILogger<ApiPresentationController> _log;
-    private readonly string _apiKey;
-    
+    private readonly VcService _vcService;
+
     public ApiPresentationController(VcService vcService
         , IOptions<AppSettingsModel> appSettings
         , CacheServiceWrapper cache
@@ -33,7 +33,7 @@ public class ApiPresentationController : ControllerBase
     }
 
     [HttpGet("request")]
-    public async Task<ActionResult> PresentationRequest([FromBody]PresentationRequest model)
+    public async Task<ActionResult> PresentationRequest([FromBody] PresentationRequest model)
     {
         var type = Request.Headers["x-type"];
         var userPresentationRequestId = Guid.NewGuid().ToString();
@@ -43,11 +43,10 @@ public class ApiPresentationController : ControllerBase
         _log.LogTrace("VC Client API Response\n{0}", vcResponse);
         return new OkObjectResult(vcResponse);
     }
-   
-    
-    
+
+
     [HttpPost("request")]
-    public async Task<ActionResult> PresentationRequestPost([FromBody]PresentationRequest model)
+    public async Task<ActionResult> PresentationRequestPost([FromBody] PresentationRequest model)
     {
         var type = Request.Headers["x-type"];
         var userPresentationRequestId = Guid.NewGuid().ToString();
@@ -58,15 +57,13 @@ public class ApiPresentationController : ControllerBase
         _log.LogTrace("VC Client API Response\n{0}", vcResponse);
         return new OkObjectResult(vcResponse);
     }
-    
+
     [HttpPost("response-html")]
     public virtual async Task<ActionResult> PresentationHtmlResponse([FromBody] PresentationResponseVcRequest request)
     {
         var userPresentationRequestId = request.Id;
         if (!_cache.GetCachedObject(userPresentationRequestId, out VcCallbackEvent vcCallbackCachedResult))
-        {
             return new NotFoundResult();
-        }
         _cache.RemoveCacheValue(userPresentationRequestId);
         // setup the response that we are returning to B2C
         var firstVerifiedCredentialsData = vcCallbackCachedResult.VerifiedCredentialsData[0];
@@ -90,10 +87,7 @@ public class ApiPresentationController : ControllerBase
         var requestAsType = (VcCallbackEvent) request.ToObject<VcCallbackEvent>();
         _log.LogTrace($"presentation-callback: {JsonConvert.SerializeObject(request)}");
         Request.Headers.TryGetValue("api-key", out var apiKey);
-        if (_apiKey != apiKey)
-        {
-            return new ForbidResult();
-        }
+        if (_apiKey != apiKey) return new ForbidResult();
         var state = requestAsType.State;
         _cache.CacheObjectWithExpiery(state, requestAsType, 600);
         return new OkResult();
@@ -108,22 +102,16 @@ public class ApiPresentationController : ControllerBase
         if (_cache.GetCachedObject(correlationId, out VcCallbackEvent callback))
         {
             if (callback.RequestStatus == "request_retrieved")
-            {
                 return new OkObjectResult(new
                     {status = 1, message = "QR Code is scanned. Waiting for validation..."});
-            }
 
             if (callback.RequestStatus == "presentation_verified")
-            {
                 //_cache.RemoveCacheValue(correlationId);
                 return new OkObjectResult(new {status = 2, message = "OK"});
-            }
 
             if (callback.RequestStatus == "presentation_error")
-            {
                 return new OkObjectResult(new
                     {status = 99, message = "Presentation failed: " + callback.Error.Message});
-            }
         }
 
         return new OkObjectResult(new {status = 0, message = "No data"});

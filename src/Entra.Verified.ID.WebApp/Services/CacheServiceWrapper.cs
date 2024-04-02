@@ -35,27 +35,36 @@ public class CacheServiceWrapper
 
         return items;
     }
-    public bool GetCachedObject<T>(string key, out T @object) {
+
+    public bool GetCachedObject<T>(string key, out T @object)
+    {
         @object = default;
         bool rc;
-        if ( (rc = _cache.TryGetValue(key, out var val) ) ) {
-            @object = (T)Convert.ChangeType(val, typeof(T));
-        }
+        if (rc = _cache.TryGetValue(key, out var val)) @object = (T) Convert.ChangeType(val, typeof(T));
         return rc;
     }
-    public bool GetCachedValue(string key, out string value) {
+
+    public bool GetCachedValue(string key, out string value)
+    {
         return _cache.TryGetValue(key, out value);
     }
-    public void CacheObjectWithNoExpiery(string key, object Object) {
+
+    public void CacheObjectWithNoExpiery(string key, object Object)
+    {
         _cache.Set(key, Object);
     }
-    public void CacheObjectWithExpiery(string key, object Object, int seconds) {
+
+    public void CacheObjectWithExpiery(string key, object Object, int seconds)
+    {
         _cache.Set(key, Object, DateTimeOffset.Now.AddSeconds(seconds));
     }
-    public void RemoveCacheValue( string key ) {
+
+    public void RemoveCacheValue(string key)
+    {
         _cache.Remove(key);
     }
 }
+
 public static class AspNetHelper
 {
     public static string SerializeToCamelCase(object request)
@@ -63,7 +72,7 @@ public static class AspNetHelper
         return JsonConvert.SerializeObject(request, Formatting.None, new JsonSerializerSettings
         {
             NullValueHandling = NullValueHandling.Ignore,
-            ContractResolver = new CamelCasePropertyNamesContractResolver() 
+            ContractResolver = new CamelCasePropertyNamesContractResolver()
         });
     }
 
