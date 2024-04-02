@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Portal.VerifiableCredentials.API", "Portal.VerifiableCredentials.API\Portal.VerifiableCredentials.API.csproj", "{A51FE25A-2C6C-402C-89D1-876FC9E64883}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Entra.Verified.ID.WebApp", "Entra.Verified.ID.WebApp\Entra.Verified.ID.WebApp.csproj", "{A51FE25A-2C6C-402C-89D1-876FC9E64883}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

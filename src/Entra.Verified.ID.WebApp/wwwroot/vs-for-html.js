@@ -132,7 +132,7 @@
                 var id = idx + 1;
                 html += "<div class=\"entry-item row\" id=\"selfAssertedClaims" + id + "\">"
                     + "<label class=\"col-6 w-100 \" id=\"label-entry" + id + "\" for=\"entry" + id + "\">" + Object.keys(selfAssertedClaims)[idx] + "</label>"
-                    + "<input class=\"col-6 no-edit w-100 \" type=\"text\" id=\"entry" + id + "\" name=\"entry" + id + "\" pattern=\"\" placeholder=\"" + selfAssertedClaims[Object.keys(selfAssertedClaims)[idx]] + "\" value=\"\" disabled></div>";
+                    + "<input class=\"col-6 no-edit w-100 \" type=\"text\" id=\"entry" + id + "\" name=\"entry" + id + "\" pattern=\"\" placeholder=\"" + selfAssertedClaims[Object.keys(selfAssertedClaims)[idx]] + "\" value=\"\" ></div>";
             }
             document.getElementById('selfAssertedClaims').innerHTML = html + "<p/>";
             document.getElementById('selfAssertedClaims').style.display = "block";
@@ -241,14 +241,11 @@
                 checkVcStatus(respPresReq, statusPrefix, "present")
             }, checkStatus);
             }
-        }
+    }
     function checkVcStatus(responseObject, prefix, type){
             fetch(`${prefix}/status?id=${responseObject.id}`,{
                 headers: {
-                    'x-session-key': `${sessionKey}`,
-                    'x-type': `${config.type}`,
-                    'x-product-session-key': `${config.productSessionKey}`,
-                    'x-payment': `${config.payment}`
+                    'x-session-key': `${sessionKey}`                   
                 }
             })
                 .then(response => response.text())
@@ -276,11 +273,7 @@
                         //document.getElementById('message').innerHTML = respMsg.message;
                         if(!(config.type.indexOf("b2c")>-1) && type==="present") {
                             displayPresentedVc(responseObject.id);
-                        }
-                        if(config.type.indexOf("b2c")>-1){
-                            document.getElementById(buttonNextIdForB2C).click();
-                            return;
-                        }
+                        }                        
                         clearInterval(setIntervalIdToCheckVcStatus);
                     }
                     // respMsg.status == 99 -> VC issueance failed
@@ -353,12 +346,16 @@
                     if(config.type.indexOf("present") > -1){
                         document.getElementById('summary').style.display = "";
                         
-                        document.getElementById('init-page-container').style.display = "none";                        
-                        document.getElementById('display-name').textContent = respPresReq.displayName;
+                        document.getElementById('init-page-container').style.display = "none";
                         document.getElementById('vc-iss').textContent = respPresReq.vcIss;
                         $('#vc-iss-name').html(respPresReq.vcIss);
                         document.getElementById('vc-sub').textContent = respPresReq.vcSub;
-                        document.getElementById('job-title').textContent = respPresReq.jobTitle;
+                        
+                        document.getElementById('firstName').textContent = respPresReq.firstName;
+                        document.getElementById('lastName').textContent = respPresReq.lastName;
+                        document.getElementById('address').textContent = respPresReq.address;
+                        document.getElementById('dateOfBirth').textContent = respPresReq.dateOfBirth;
+                        
                         document.getElementById('subject-link').href = "https://identity.foundation/ion/explorer/?did=" + respPresReq.vcSub;
 
                         document.getElementById('face-check-result').textContent = respPresReq.faceCheckMatchConfidenceScore;

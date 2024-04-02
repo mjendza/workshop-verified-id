@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Net.Http;
 using System.Net.Http.Headers;
 using System.Runtime.InteropServices;
@@ -12,7 +11,6 @@ using Microsoft.Extensions.Options;
 using Microsoft.Identity.Client;
 using Newtonsoft.Json;
 using Portal.VerifiableCredentials.API.Configuration;
-using Portal.VerifiableCredentials.API.Controllers.Base;
 using Portal.VerifiableCredentials.API.Models;
 using Portal.VerifiableCredentials.API.Models.VcApiContracts;
 using IssuanceResponse = Portal.VerifiableCredentials.API.Models.IssuanceResponse;
@@ -132,6 +130,10 @@ public class VcService
         {
             request.Claims = new Dictionary<string, string>();
             request.Claims.Add("photo", requestModel.Photo);
+            request.Claims.Add("firstName", requestModel.FirstName);
+            request.Claims.Add("lastName", requestModel.LastName);
+            request.Claims.Add("dateOfBirth", requestModel.DateOfBirth);
+            request.Claims.Add("address", requestModel.Address);
         }
         else
         {

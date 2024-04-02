@@ -5,6 +5,7 @@
     <UserSecretsId>8fd0f01b-c238-475c-97dd-6638d6aa0463</UserSecretsId>
     <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
     <DockerfileContext>.</DockerfileContext>
+    <RootNamespace>Portal.VerifiableCredentials.API</RootNamespace>
   </PropertyGroup>
 
   <ItemGroup>
