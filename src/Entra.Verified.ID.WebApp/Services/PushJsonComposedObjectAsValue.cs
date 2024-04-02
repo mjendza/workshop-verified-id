@@ -1,6 +1,6 @@
 using System;
 
-namespace Portal.VerifiableCredentials.API.Services;
+namespace Entra.Verified.ID.WebApp.Services;
 
 internal struct PushJsonComposedObjectAsValue<T> : IDisposable
 {

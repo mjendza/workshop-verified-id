@@ -6,16 +6,16 @@ using System.Runtime.InteropServices;
 using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
+using Entra.Verified.ID.WebApp.Configuration;
+using Entra.Verified.ID.WebApp.Models;
+using Entra.Verified.ID.WebApp.Models.VcApiContracts;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.Identity.Client;
 using Newtonsoft.Json;
-using Portal.VerifiableCredentials.API.Configuration;
-using Portal.VerifiableCredentials.API.Models;
-using Portal.VerifiableCredentials.API.Models.VcApiContracts;
-using IssuanceResponse = Portal.VerifiableCredentials.API.Models.IssuanceResponse;
+using IssuanceResponse = Entra.Verified.ID.WebApp.Models.IssuanceResponse;
 
-namespace Portal.VerifiableCredentials.API.Services;
+namespace Entra.Verified.ID.WebApp.Services;
 
 public class VcService
 {

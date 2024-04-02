@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Entra.Verified.ID.WebApp.Services;
 using Newtonsoft.Json;
-using Portal.VerifiableCredentials.API.Services;
 
-namespace Portal.VerifiableCredentials.API.Models;
+namespace Entra.Verified.ID.WebApp.Models;
 
 [JsonConverter(typeof(FlatCommonFieldsConverter<B2CVerificationResult>))]
 public record B2CVerificationResult : WithClaims

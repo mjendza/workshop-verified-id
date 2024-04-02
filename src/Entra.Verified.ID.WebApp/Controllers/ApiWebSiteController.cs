@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Threading.Tasks;
+using Entra.Verified.ID.WebApp.Services;
 using Microsoft.AspNetCore.Mvc;
-using Portal.VerifiableCredentials.API.Services;
 
-namespace Portal.VerifiableCredentials.API.Controllers;
+namespace Entra.Verified.ID.WebApp.Controllers;
 
 [Route("api/website/[action]")]
 [ApiController]

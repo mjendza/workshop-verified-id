@@ -1,15 +1,15 @@
 ﻿using System;
 using System.Net;
 using System.Threading.Tasks;
+using Entra.Verified.ID.WebApp.Configuration;
+using Entra.Verified.ID.WebApp.Models;
+using Entra.Verified.ID.WebApp.Models.VcApiContracts;
+using Entra.Verified.ID.WebApp.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
-using Portal.VerifiableCredentials.API.Configuration;
-using Portal.VerifiableCredentials.API.Models;
-using Portal.VerifiableCredentials.API.Models.VcApiContracts;
-using Portal.VerifiableCredentials.API.Services;
 
-namespace Portal.VerifiableCredentials.API.Controllers.Base;
+namespace Entra.Verified.ID.WebApp.Controllers.Base;
 
 [Route(VcUrls.IssuanceEndpoint)]
 [ApiController]

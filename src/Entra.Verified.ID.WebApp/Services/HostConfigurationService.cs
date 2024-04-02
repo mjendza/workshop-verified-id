@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 
-namespace Portal.VerifiableCredentials.API.Services;
+namespace Entra.Verified.ID.WebApp.Services;
 
 public class HostConfigurationService : IHostConfigurationService
 {

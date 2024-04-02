@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace Portal.VerifiableCredentials.API.Models.VcApiContracts;
+namespace Entra.Verified.ID.WebApp.Models.VcApiContracts;
 
 public class Callback
 {

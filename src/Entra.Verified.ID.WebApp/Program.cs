@@ -1,9 +1,9 @@
+using Entra.Verified.ID.WebApp.Configuration;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.HttpLogging;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-using Portal.VerifiableCredentials.API.Configuration;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -50,7 +50,7 @@ app.UseAuthorization();
 app.UseEndpoints(endpoints => { endpoints.MapDefaultControllerRoute(); });
 app.Run();
 
-namespace Portal.VerifiableCredentials.API
+namespace Entra.Verified.ID.WebApp
 {
     public class Program
     {

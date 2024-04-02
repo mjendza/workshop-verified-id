@@ -1,9 +1,9 @@
 ﻿using System.Collections.Generic;
-using Portal.VerifiableCredentials.API.Configuration;
-using Portal.VerifiableCredentials.API.Models;
-using Portal.VerifiableCredentials.API.Models.VcApiContracts;
+using Entra.Verified.ID.WebApp.Configuration;
+using Entra.Verified.ID.WebApp.Models;
+using Entra.Verified.ID.WebApp.Models.VcApiContracts;
 
-namespace Portal.VerifiableCredentials.API.Services;
+namespace Entra.Verified.ID.WebApp.Services;
 
 public static class VcRequestFactory
 {

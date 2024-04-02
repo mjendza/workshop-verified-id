@@ -1,4 +1,4 @@
-﻿namespace Portal.VerifiableCredentials.API.Configuration;
+﻿namespace Entra.Verified.ID.WebApp.Configuration;
 
 public class EntraServicePrincipal
 {

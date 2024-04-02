@@ -1,4 +1,4 @@
-﻿namespace Portal.VerifiableCredentials.API.Models;
+﻿namespace Entra.Verified.ID.WebApp.Models;
 
 public class PresentationRequest
 {

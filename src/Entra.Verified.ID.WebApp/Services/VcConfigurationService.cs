@@ -1,7 +1,7 @@
+using Entra.Verified.ID.WebApp.Configuration;
 using Microsoft.Extensions.Options;
-using Portal.VerifiableCredentials.API.Configuration;
 
-namespace Portal.VerifiableCredentials.API.Services;
+namespace Entra.Verified.ID.WebApp.Services;
 
 public class VcConfigurationService
 {

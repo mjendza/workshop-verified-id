@@ -5,7 +5,7 @@
         <UserSecretsId>8fd0f01b-c238-475c-97dd-6638d6aa0463</UserSecretsId>
         <DockerDefaultTargetOS>Windows</DockerDefaultTargetOS>
         <DockerfileContext>.</DockerfileContext>
-        <RootNamespace>Portal.VerifiableCredentials.API</RootNamespace>
+        <RootNamespace>Entra.Verified.ID.WebApp</RootNamespace>
     </PropertyGroup>
 
     <ItemGroup>
@@ -18,35 +18,5 @@
         <PackageReference Include="Newtonsoft.Json" Version="13.0.1"/>
         <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="7.4.0"/>
     </ItemGroup>
-
-
-    <ItemGroup>
-        <_ContentIncludedByDefault Remove="credentials\b2c-DisplayFile.json"/>
-        <_ContentIncludedByDefault Remove="credentials\b2c-RulesFile-hint.json"/>
-        <_ContentIncludedByDefault Remove="credentials\b2c-RulesFile.json"/>
-        <_ContentIncludedByDefault Remove="wwwroot\html\qrcode.min.js"/>
-        <_ContentIncludedByDefault Remove="wwwroot\html\selfAsserted_VC_SUSI_DEV.html"/>
-        <_ContentIncludedByDefault Remove="wwwroot\html\styles_vc.css"/>
-        <_ContentIncludedByDefault Remove="wwwroot\html\vs_dev.js"/>
-        <_ContentIncludedByDefault Remove="wwwroot\product\ingridient-issue.html"/>
-        <_ContentIncludedByDefault Remove="wwwroot\product\product-generator.html"/>
-        <_ContentIncludedByDefault Remove="wwwroot\product\product-presentation.html"/>
-        <_ContentIncludedByDefault Remove="wwwroot\bank\account\create.html"/>
-        <_ContentIncludedByDefault Remove="wwwroot\bank\account\pay.html"/>
-        <_ContentIncludedByDefault Remove="wwwroot\bank\identity\demo-face-check.html"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\1.svg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\2.svg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\3.svg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\4.svg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\5.svg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\6.svg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\7.svg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\8.svg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\bank.png"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\big-picture.jpg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\ingridient.jpg"/>
-        <_ContentIncludedByDefault Remove="wwwroot\images\product-generate.jpg"/>
-    </ItemGroup>
-
 
 </Project>

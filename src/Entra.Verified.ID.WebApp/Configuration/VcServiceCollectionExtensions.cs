@@ -1,8 +1,8 @@
 using System.Threading.Tasks;
+using Entra.Verified.ID.WebApp.Services;
 using Microsoft.Extensions.DependencyInjection;
-using Portal.VerifiableCredentials.API.Services;
 
-namespace Portal.VerifiableCredentials.API.Configuration;
+namespace Entra.Verified.ID.WebApp.Configuration;
 
 internal static class VcServiceCollectionExtensions
 {

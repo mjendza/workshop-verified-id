@@ -1,9 +1,9 @@
 using System;
+using Entra.Verified.ID.WebApp.Models;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Portal.VerifiableCredentials.API.Models;
 
-namespace Portal.VerifiableCredentials.API.Services;
+namespace Entra.Verified.ID.WebApp.Services;
 
 internal class FlatCommonFieldsConverter<THighLevelContract> : JsonConverter where THighLevelContract : WithClaims
 {
