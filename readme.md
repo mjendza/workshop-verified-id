@@ -27,3 +27,21 @@
     - work with multiple issuers
     - check the protocol details during the test cases(DID for holder and issuer)
 
+
+## Steps
+### Setup Service Principal to build Verified ID requests
+- Create SP with `VerifiableCredential.Create.All`
+- update the `appsettings.json` with the SP details
+```json
+  "EntraTenantServicePrincipal": {
+    "TenantId": "",
+    "ClientId": "",
+    "ClientSecret": ""
+  },
+```
+### Summary
+- Issue|Present VC with the Entra Verified ID without scope - access to all Credentials Types
+- Entra Verified ID is a global service - one per tenant
+
+
+
