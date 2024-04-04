@@ -1,4 +1,4 @@
-# Build your first Verifiable Credentials with Entra Verified ID
+# Start your journey with a Decentralized Identity. Create the first Verifiable Credential with the Entra Verified ID
 
 ## Prerequisites
 ### Technical
@@ -15,13 +15,15 @@
 - [ ] basic knowledge of C# and .NET
 - [ ] Basic understanding of Service Principal Authentication
 
-
 ## Achievements
 - Know how to set up a Verified ID service.
 - Design and deploy first digital credentials.
 
 - Modify the sample application to build:
-    - issueance request
-    - presentation request
+    - setup Service Principal to build Verified ID requests
+    - issueance request and pesentation request
     - modify presentation request to require Face Check
+    - extend VC with new claims
+    - work with multiple issuers
+    - check the protocol details during the test cases(DID for holder and issuer)
 
