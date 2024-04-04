@@ -29,7 +29,16 @@
 
 
 ## Steps
+### Create Entra Verified ID
+#### Tasks
+- Quick setup for tenant (with one click)
+- Advanced setup with KeyVault as homework
+### Summary
+- Entra Verified ID is a global service - one per tenant
+
 ### Setup Service Principal to build Verified ID requests
+#### Tasks
+Official doc [link](https://learn.microsoft.com/en-us/entra/verified-id/verifiable-credentials-configure-tenant#register-an-application-in-microsoft-entra-id)
 - Create SP with `VerifiableCredential.Create.All`
 - update the `appsettings.json` with the SP details
 ```json
@@ -41,7 +50,7 @@
 ```
 ### Summary
 - Issue|Present VC with the Entra Verified ID without scope - access to all Credentials Types
-- Entra Verified ID is a global service - one per tenant
+
 
 
 
