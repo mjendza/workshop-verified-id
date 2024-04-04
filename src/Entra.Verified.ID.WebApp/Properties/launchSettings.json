@@ -1,0 +1,12 @@
+{
+  "profiles": {
+    "Portal.VerifiableCredentials.API.Development": {
+      "commandName": "Project",
+      "launchBrowser": false,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      },
+      "applicationUrl": "http://localhost:5000"
+    }
+  }
+}
