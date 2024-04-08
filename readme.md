@@ -28,3 +28,16 @@
     - cooperate with other issues, you can trust other attendees from the workshop
 
 ## Technical details
+[Blog post](https://mjendza.net/post/entra-verified-id/)
+
+[Basics of Verifiable Credentials](doc/basic/)
+
+[MS Documentation](https://learn.microsoft.com/en-us/entra/verified-id/decentralized-identifier-overview)
+
+## Workshop Steps
+1. [Setup Verified ID](doc/stage-1/setup-verified-id.md)
+2. [Create VC](doc/stage-2/create-vc.md)
+3. [Service Principal](doc/stage-3/service-principal.md)
+4. [Issue](doc/stage-4/issue.md)
+5. [Presentation](doc/stage-5/presentation.md)
+6. [Trust](doc/stage-6/trust.md)
