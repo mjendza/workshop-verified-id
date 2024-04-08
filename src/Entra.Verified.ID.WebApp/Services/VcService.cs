@@ -73,7 +73,7 @@ public class VcService
     }
 
     public async Task<VerificationResponse> CallCreatePresentationRequestVcService(string userPresentationRequestId,
-        PresentationRequest requestModel, string type = null)
+        PresentationRequest requestModel)
     {
         var request = VcRequestFactory.CreatePresentationRequest(userPresentationRequestId, _settings.ForHostSettings(),
             GetRequestHostName(), _apiKeyForVerifiedCredentialsCallback, requestModel);
@@ -95,11 +95,7 @@ public class VcService
     public async Task<IssuanceResponse> CallCreateIssuanceRequestVcService(string userPresentationRequestId,
         IssuanceRequest requestModel)
     {
-        var runtimeConfiguration = _settings.ForHostSettings();
-        var pin = GeneratePinWhenNeeded(runtimeConfiguration);
-        var path = GetRequestHostName();
-        var request = await CreateIssuanceRequestWithClaims(userPresentationRequestId, pin, runtimeConfiguration, path,
-            requestModel);
+        var request = await CreateIssuanceRequestWithClaims(userPresentationRequestId, requestModel);
         var jsonString = AspNetHelper.SerializeToCamelCase(request);
         _logger.LogTrace("VC Client API Request\n{0}", jsonString);
 
@@ -113,16 +109,18 @@ public class VcService
         if (result.IsSuccessStatusCode)
             return JsonConvert.DeserializeObject<IssuanceResponse>(responseAsString) with
             {
-                Id = userPresentationRequestId, Pin = pin?.Value
+                Id = userPresentationRequestId, Pin = request.Pin?.Value
             };
         _logger.LogError($"VC Client API Error Response: {responseAsString}");
         throw new ExternalException("wrong request to VC");
     }
 
-    private async Task<VcIssuanceRequest> CreateIssuanceRequestWithClaims(string userPresentationRequestId, Pin pin,
-        AppSettingsModel config, string path, IssuanceRequest requestModel)
+    private async Task<VcIssuanceRequest> CreateIssuanceRequestWithClaims(string userPresentationRequestId, IssuanceRequest requestModel)
     {
-        var request = VcRequestFactory.CreateIssuanceRequest(userPresentationRequestId, pin, config, path,
+        var runtimeConfiguration = _settings.ForHostSettings();
+        var pin = GeneratePinWhenNeeded(runtimeConfiguration);
+        var path = GetRequestHostName();
+        var request = VcRequestFactory.CreateIssuanceRequest(userPresentationRequestId, pin, runtimeConfiguration, path,
             _apiKeyForVerifiedCredentialsCallback);
         var manifest = await VcManifest();
         var claims = manifest.GetSelfAssertedClaims();

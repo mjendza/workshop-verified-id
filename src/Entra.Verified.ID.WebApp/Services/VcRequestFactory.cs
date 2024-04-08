@@ -30,23 +30,15 @@ public static class VcRequestFactory
         var cred = new RequestedCredential
         {
             Type = settings.CredentialType,
-            //Manifest = settings.CredentialManifestUrl,
             Purpose = requestModel.PurposeOfPresentation
-            //AcceptedIssuers = new List<string>(new[] {_appSettings.VerifierAuthority})
+            
         };
 
-        if (requestModel != null && requestModel.FaceCheckEnabled)
+        if (requestModel.FaceCheckEnabled)
         {
-            cred.Configuration = new Models.VcApiContracts.Configuration();
-            cred.Configuration.Validation.FaceCheck = new FaceCheck
-            {
-                SourcePhotoClaimName = "photo",
-                MatchConfidenceThreshold = 70
-            };
+            
         }
-
         request.RequestedCredentials.Add(cred);
-
         return request;
     }
 
