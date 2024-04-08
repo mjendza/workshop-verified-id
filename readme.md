@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # Start your journey with a Decentralized Identity. Create the first Verifiable Credential with the Entra Verified ID
 
 ## Prerequisites
@@ -19,7 +17,6 @@
 - [ ] Basic understanding of Service Principal Authentication
 - [ ] JavasScript - JQuery and Vanilla JS basics
 
->>>>>>> 120e24c (changes)
 ## Achievements
 - Know how to set up a Verified ID service.
 - Deploy the own credentials and define the schema.
@@ -28,4 +25,6 @@
     - issueance request
     - presentation request
     - modify presentation request to require Face Check
+    - cooperate with other issues, you can trust other attendees from the workshop
 
+## Technical details
