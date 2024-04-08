@@ -1,10 +1,7 @@
 (function () {
 
     var setIntervalIdToCheckVcStatus = null;
-    var buttonNextIdForB2C = "next";
     var checkStatus = 3000;
-
-    var sessionKey = getRandomInt(9000000)
 
     function getRandomInt(max) {
         return Math.floor(Math.random() * max);
@@ -251,11 +248,7 @@
     }
 
     function checkVcStatus(responseObject, prefix, type) {
-        fetch(`${prefix}/status?id=${responseObject.id}`, {
-            headers: {
-                'x-session-key': `${sessionKey}`
-            }
-        })
+        fetch(`${prefix}/status?id=${responseObject.id}`, { })
             .then(response => response.text())
             .catch(error => document.getElementById("message").innerHTML = error)
             .then(response => {
@@ -270,15 +263,12 @@
 
                 // respMsg.status == 1 -> QR Code scanned
                 if (respMsg.status == 1) {
-                    //document.getElementById('message').innerHTML = respMsg.message;
                     document.getElementById("qr-code").style.opacity = "0.1";
-                    //clearInterval(checkStatus);
                 }
                 // respMsg.status == 2 -> VC issued
                 if (respMsg.status == 2) {
                     document.getElementById('qr-code-frame').style.display = "none";
                     document.getElementById('qr-code').style.display = "none";
-                    //document.getElementById('message').innerHTML = respMsg.message;
                     if (!(config.type.indexOf("b2c") > -1) && type === "present") {
                         displayPresentedVc(responseObject.id);
                     }
@@ -288,11 +278,8 @@
                 if (respMsg.status == 99) {
                     document.getElementById('qr-code-frame').style.display = "none";
                     document.getElementById('qr-code').style.display = "none";
-                    //document.getElementById('message').innerHTML = respMsg.message;
-                    //document.getElementById('message').style.textColor = "red";
                     clearInterval(setIntervalIdToCheckVcStatus);
                 }
-
             });
     }
 

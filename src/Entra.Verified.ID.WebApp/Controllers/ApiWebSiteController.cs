@@ -26,8 +26,6 @@ public class WebSiteController : ControllerBase
         var info = new
         {
             date = DateTime.Now.ToString(),
-            // host = _vcService.GetRequestHostName(),
-            // api =  $"{_vcService.GetRequestHostName()}/{VcUrls.IssuanceEndpoint}",
             didIssuer = manifest.Input.Issuer,
             credentialType = settings.CredentialType,
             displayCard = manifest.Display.Card,

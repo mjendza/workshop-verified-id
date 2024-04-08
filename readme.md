@@ -9,12 +9,13 @@
 
 - [ ] Visual Studio 2022 or Jetbrains Rider
 - [ ] .NET 7 SDK
-- [ ] JavasScript - JQuery and Vanilla JS basics
+
 - [ ] ngrok (for local development) - or Cloudflare tunnel
 
 ### Skills
 - [ ] basic knowledge of C# and .NET
 - [ ] Basic understanding of Service Principal Authentication
+- [ ] JavasScript - JQuery and Vanilla JS basics
 
 ## Achievements
 - Know how to set up a Verified ID service.
