@@ -28,7 +28,7 @@
     - cooperate with other issues, you can trust other attendees from the workshop
 
 ## Technical details
-[Blog post](https://mjendza.net/post/entra-verified-id/)
+[My blog post](https://mjendza.net/post/entra-verified-id/)
 
 [Basics of Verifiable Credentials](doc/basic/)
 

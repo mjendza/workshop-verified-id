@@ -14,3 +14,7 @@ Create service principal with expected application permissions to work with Veri
 
 ## MS Documentation
 https://learn.microsoft.com/en-us/entra/verified-id/verifiable-credentials-configure-tenant#register-an-application-in-microsoft-entra-id
+
+
+## ScreenGrab from MS Page
+![how-to-setup](screencapture-learn-microsoft-en-us-entra-verified-id-verifiable-credentials-configure-tenant-2024-04-09-15_04_07.png)
