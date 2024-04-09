@@ -31,20 +31,7 @@ public class ApiPresentationController : ControllerBase
         _log = log;
         _apiKey = appSettings.Value.ApiKeyForVerifiedCredentialsCallback;
     }
-
-    [HttpGet("request")]
-    public async Task<ActionResult> PresentationRequest([FromBody] PresentationRequest model)
-    {
-        var type = Request.Headers["x-type"];
-        var userPresentationRequestId = Guid.NewGuid().ToString();
-        var vcResponse =
-            await _vcService.CallCreatePresentationRequestVcService(userPresentationRequestId, model, type);
-        vcResponse.Id = userPresentationRequestId;
-        _log.LogTrace("VC Client API Response\n{0}", vcResponse);
-        return new OkObjectResult(vcResponse);
-    }
-
-
+    
     [HttpPost("request")]
     public async Task<ActionResult> PresentationRequestPost([FromBody] PresentationRequest model)
     {
@@ -52,7 +39,7 @@ public class ApiPresentationController : ControllerBase
         var userPresentationRequestId = Guid.NewGuid().ToString();
         model.PurposeOfPresentation = "Please share expected VC data.";
         var vcResponse =
-            await _vcService.CallCreatePresentationRequestVcService(userPresentationRequestId, model, type);
+            await _vcService.CallCreatePresentationRequestVcService(userPresentationRequestId, model);
         vcResponse.Id = userPresentationRequestId;
         _log.LogTrace("VC Client API Response\n{0}", vcResponse);
         return new OkObjectResult(vcResponse);
