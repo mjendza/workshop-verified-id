@@ -3,9 +3,15 @@
 
 ## Actions
 - run the flow to present the credential wihout face check
-- run the flow to present the credential with face check - does it work? 
+- run the flow to present the credential with face check - does it work?
 
-### update presetation request
+## Big Picture
+![Flow](flow.png)
+
+### Flow
+![Flow](flow-technical.png)
+
+### Update presetation request
 please find in the code presetation request add add missing part like on the raw http request below
 
 ```json
@@ -26,10 +32,18 @@ please find in the code presetation request add add missing part like on the raw
         }
 ```
 
-### trusted issuers
+and update code here:
+```csharp
+if (requestModel.FaceCheckEnabled)
+{
+    
+}
+```
+
+### Trusted issuers
 - share your ngrok or cloudflare tunnel with workshop collegue - **should be different issuer-tenant** - check if works
 
-### limit accepted issuers
+### Limit accepted issuers
 [Presentation Request details](https://learn.microsoft.com/en-us/entra/verified-id/get-started-request-api?tabs=http%2Cissuancerequest%2Cpresentationrequest#presentation-request-example)
 
 update the `acceptedIssuers` to limit the accepted issuers to the one you trust
@@ -62,4 +76,4 @@ update the `acceptedIssuers` to limit the accepted issuers to the one you trust
 https://learn.microsoft.com/en-us/entra/verified-id/get-started-request-api?tabs=http%2Cissuancerequest%2Cpresentationrequest#presentation-request-example
 
 ## FaceCheck details ScreenGrab
-![screen](screencapture-learn-microsoft-en-us-entra-verified-id-get-started-request-api-2024-04-09-15_04_07.png)
+![screen](screencapture-learn-microsoft-en-us-entra-verified-id-using-facecheck-2024-04-09-16_12_32.png)

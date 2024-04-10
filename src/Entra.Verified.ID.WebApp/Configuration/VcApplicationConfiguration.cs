@@ -3,7 +3,6 @@
 public static class VcApplicationConfiguration
 {
     public static string VcClientName => "Factorlabs";
-    public static string VcPurpose => "Hey Factorlabs user! Please share with us your Digital Identity";
 
     public static string VerifiableCredentialsApiEndpoint =>
         "https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/";

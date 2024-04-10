@@ -38,6 +38,11 @@
 1. [Setup Verified ID](doc/stage-1/setup-verified-id.md)
 2. [Create VC](doc/stage-2/create-vc.md)
 3. [Service Principal](doc/stage-3/service-principal.md)
-4. [Issue](doc/stage-4/issue.md)
-5. [Presentation](doc/stage-5/presentation.md)
-6. [Trust](doc/stage-6/trust.md)
+4. [Issue](doc/stage-4/ngrok.md)
+5. [Presentation](doc/stage-5/issue.md)
+6. [Trust](doc/stage-6/present.md)
+
+## Demo
+- [Issue](https://vc.factorlabs.pl/issue/demo-face-check.html)
+- [Present](https://vc.factorlabs.pl/present/demo-face-check.html)
+- [Present with Face Check](https://vc.factorlabs.pl/present/demo-face-check.html?faceCheckEnabled=1)
