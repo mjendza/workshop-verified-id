@@ -9,7 +9,7 @@
       "uri": "https://verified-id.factorlabs.pl/guard.png",
       "description": "Guardian - Safe and Trust"
     },
-    "description": "Worksop Face Check Credential. For TEST purposes only!",
+    "description": "Worksop Face Check Credential. For TEST purposes only!"
   },
   "consent": {
     "title": "Required to login to critical laboratory places",
