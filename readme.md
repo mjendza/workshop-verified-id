@@ -1,5 +1,7 @@
 # Start your journey with a Decentralized Identity. Create the first Verifiable Credential with the Entra Verified ID
 
+![Workshop](doc/pict/workshop.png)
+
 ## Prerequisites
 ### Technical
 - [ ] [Entra ID Tenant](https://www.microsoft.com/en-gb/security/business/identity-access/microsoft-entra-id)
