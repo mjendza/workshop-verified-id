@@ -59,4 +59,4 @@
 ![Presentation Request](doc/pict/present.png)
 
 ### Presentation Result
-![Presentation Result](doc/pict/present-result.png)
+![Presentation Result](doc/pict/presentation-result.png)
