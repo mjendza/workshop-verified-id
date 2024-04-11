@@ -38,11 +38,25 @@
 1. [Setup Verified ID](doc/stage-1/setup-verified-id.md)
 2. [Create VC](doc/stage-2/create-vc.md)
 3. [Service Principal](doc/stage-3/service-principal.md)
-4. [Issue](doc/stage-4/ngrok.md)
-5. [Presentation](doc/stage-5/issue.md)
-6. [Trust](doc/stage-6/present.md)
+4. [Tunnel]](doc/stage-4/ngrok.md)
+5. [Issuance](doc/stage-5/issue.md)
+6. [Presentation](doc/stage-6/present.md)
+7. [Homework](doc/stage-7/homework.md)
 
 ## Demo
-- [Issue](https://vc.factorlabs.pl/issue/demo-face-check.html)
-- [Present](https://vc.factorlabs.pl/present/demo-face-check.html)
-- [Present with Face Check](https://vc.factorlabs.pl/present/demo-face-check.html?faceCheckEnabled=1)
+- [Issue](https://vc.factorlabs.pl/workshop/issue/demo-face-check.html)
+- [Present](https://vc.factorlabs.pl/workshop/present/demo-face-check.html)
+- [Present with Face Check](https://vc.factorlabs.pl/workshop/present/demo-face-check.html?faceCheckEnabled=1)
+
+## Screens
+### Issue VC
+![Issue VC](doc/pict/issue.png)
+
+### Issue with all fields and QR Code
+![Issue QR](doc/pict/full-issue.png)
+
+### Presentation Request
+![Presentation Request](doc/pict/present.png)
+
+### Presentation Result
+![Presentation Result](doc/pict/presentation-result.png)
