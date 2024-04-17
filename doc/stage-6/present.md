@@ -43,6 +43,11 @@ if (requestModel.FaceCheckEnabled)
 ### Trusted issuers
 - share your ngrok or cloudflare tunnel with workshop collegue - **should be different issuer-tenant** - check if works
 
+#### Test your local tenant with my Entra Verified ID
+Present your credential from your tenant to my service - I trust all Entra issuers (services) - totally different experience than OpenId Connect via federation
+
+https://vc.factorlabs.pl/workshop/present/demo-face-check.html
+
 ### Limit accepted issuers
 [Presentation Request details](https://learn.microsoft.com/en-us/entra/verified-id/get-started-request-api?tabs=http%2Cissuancerequest%2Cpresentationrequest#presentation-request-example)
 
