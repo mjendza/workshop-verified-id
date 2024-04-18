@@ -12,7 +12,7 @@
 ![Flow](flow-technical.png)
 
 ### Update presetation request
-please find in the code presetation request add add missing part like on the raw http request below
+To enable Face Check, the payload of the presentation request must meet certain expectations as outlined [here](https://learn.microsoft.com/en-us/entra/verified-id/using-facecheck#presentation-request-including-face-check):
 
 ```json
 // POST https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/createPresentationRequest
@@ -31,14 +31,31 @@ please find in the code presetation request add add missing part like on the raw
           }
         }
 ```
+To achieve this, follow these steps:
 
-and update code here:
+1. Navigate to the `Services\VcRequestFactory.cs` file.
+2. Locate the `CreatePresentationRequest` method.
+3. Find the section marked `if (requestModel.FaceCheckEnabled)`.
+4. Update the code within this section as follows:
+
 ```csharp
 if (requestModel.FaceCheckEnabled)
 {
     
 }
 ```
+->
+```csharp
+if (requestModel.FaceCheckEnabled)
+{
+    cred.Configuration.Validation.FaceCheck = new FaceCheck()
+    {
+        SourcePhotoClaimName = "photo",
+        MatchConfidenceThreshold = 70
+    };
+}
+```
+This modification ensures that Face Check is properly configured in the presentation request.
 
 ### Trusted issuers
 - share your ngrok or cloudflare tunnel with workshop collegue - **should be different issuer-tenant** - check if works

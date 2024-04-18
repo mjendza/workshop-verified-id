@@ -15,7 +15,7 @@ Or if You use Visual Studio
 - create public Dev Tunnel in Visual Studio:
 
 ![how-to-create-dev-tunnel](dev-tunnel-create.png)
-![how-to-create-dev-tunnel](dev-tunnel-setup.png)
+![how-to-create-dev-tunnel](dev-tunnel-create-setup.png)
 - update HOST for the Asp.Net Application:
 ```
 public class HostConfigurationService : IHostConfigurationService
