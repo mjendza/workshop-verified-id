@@ -38,7 +38,7 @@
       }
     ]
   },
-  "validityInterval": 31556952,
+  "validityInterval": 15552000,
   "vc": {
     "type": [
       "WorkshopUserIdentityCard"
