@@ -12,7 +12,7 @@
 ![Flow](flow-technical.png)
 
 ### Update presetation request
-To enable Face Check, the payload of the presentation request must meet payload expectations as outlined [here](https://learn.microsoft.com/en-us/entra/verified-id/using-facecheck#presentation-request-including-face-check):
+To enable Face Check, the payload of the presentation request must meet certain expectations as outlined [here](https://learn.microsoft.com/en-us/entra/verified-id/using-facecheck#presentation-request-including-face-check):
 
 ```json
 // POST https://verifiedid.did.msidentity.com/v1.0/verifiableCredentials/createPresentationRequest
