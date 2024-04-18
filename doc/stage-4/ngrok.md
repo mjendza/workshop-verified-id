@@ -13,6 +13,7 @@ There is a callback from Entra Verified ID endpoint - so the API must be public.
 Or if You use Visual Studio 
 
 - create public Dev Tunnel in Visual Studio:
+
 ![how-to-create-dev-tunnel](dev-tunnel-create.png)
 ![how-to-create-dev-tunnel](dev-tunnel-setup.png)
 - update HOST for the Asp.Net Application:
@@ -28,7 +29,7 @@ public class HostConfigurationService : IHostConfigurationService
 - run application with Dev Tunnel
 
 ## Verification Steps
-- access api via ngrok tunnel URL
+- access api via ngrok tunnel URL or Dev Tunnel
 
 ## Screen
 ![how-to-setup](ngrok-setup-edge.png)
