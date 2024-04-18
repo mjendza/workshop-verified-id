@@ -4,6 +4,9 @@
 ## Big Picture
 ![Flow](flow.png)
 
+## Technical Details
+![technical](issuance.png)
+
 ## Actions
 Open Solution with VisualStudio or Rider `iam\workshop-verified-id\src\Entra.Verified.ID.Workshop.sln`
 

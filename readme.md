@@ -17,7 +17,7 @@
 ### Skills
 - [ ] basic knowledge of C# and .NET
 - [ ] Basic understanding of Service Principal Authentication
-- [ ] JavasScript - JQuery and Vanilla JS basics
+- [ ] JavaScript - JQuery and Vanilla JS basics
 
 ## Achievements
 - Know how to set up a Verified ID service.
@@ -40,7 +40,7 @@
 1. [Setup Verified ID](doc/stage-1/setup-verified-id.md)
 2. [Create VC](doc/stage-2/create-vc.md)
 3. [Service Principal](doc/stage-3/service-principal.md)
-4. [Tunnel]](doc/stage-4/ngrok.md)
+4. [Tunnel](doc/stage-4/ngrok.md)
 5. [Issuance](doc/stage-5/issue.md)
 6. [Presentation](doc/stage-6/present.md)
 7. [Homework](doc/stage-7/homework.md)

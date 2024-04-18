@@ -89,7 +89,7 @@ public class VcService
         if (result.IsSuccessStatusCode)
             return JsonConvert.DeserializeObject<VerificationResponse>(verificationResponseAsString);
         _logger.LogError($"VC Client API Error Response {verificationResponseAsString}");
-        throw new ExternalException("wrong request to VC");
+        throw new ExternalException($"wrong request to VC: {verificationResponseAsString}");
     }
 
     public async Task<IssuanceResponse> CallCreateIssuanceRequestVcService(string userPresentationRequestId,
@@ -112,7 +112,7 @@ public class VcService
                 Id = userPresentationRequestId, Pin = request.Pin?.Value
             };
         _logger.LogError($"VC Client API Error Response: {responseAsString}");
-        throw new ExternalException("wrong request to VC");
+        throw new ExternalException($"wrong request to VC: {responseAsString}");
     }
 
     private async Task<VcIssuanceRequest> CreateIssuanceRequestWithClaims(string userPresentationRequestId, IssuanceRequest requestModel)
