@@ -68,7 +68,6 @@ update the `acceptedIssuers` to limit the accepted issuers to the one you trust
 }
 ```
 
-
 ## Verification Steps
 - manual verification case by case
 
