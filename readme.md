@@ -1,4 +1,5 @@
-# Start your journey with a Decentralized Identity. Create the first Verifiable Credential with the Entra Verified ID
+# Verified ID Workshop
+## Start your journey with a Decentralized Identity. Create the first Verifiable Credential with the Entra Verified ID
 
 ![Workshop](doc/pict/workshop.png)
 
